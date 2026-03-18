@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- ░ Primary SEO -->
+  <title>Shivam Singh — Software Engineer | Java · React · Spring Boot</title>
+  <meta name="description" content="Portfolio of Shivam Singh — 3rd year B.Tech CS student at Galgotias University. Building SkillBridge, an AI-powered skill exchange platform. Skilled in Java, Python, React, Spring Boot and Machine Learning."/>
+  <meta name="keywords" content="Shivam Singh, Software Engineer, Java Developer, React Developer, Spring Boot, Python, Machine Learning, Portfolio, Galgotias University, SkillBridge"/>
+  <meta name="author" content="Shivam Singh"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://shivam-singh-hash.github.io/portfolio/"/>
+
+  <!-- ░ Open Graph (LinkedIn, Facebook, WhatsApp preview) -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://shivam-singh-hash.github.io/portfolio/"/>
+  <meta property="og:title"       content="Shivam Singh — Software Engineer"/>
+  <meta property="og:description" content="Building SkillBridge — an AI-powered skill exchange platform. Java · React · Spring Boot · Python · ML. Open to opportunities."/>
+  <meta property="og:image"       content="https://shivam-singh-hash.github.io/portfolio/public/assets/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name"   content="Shivam Singh Portfolio"/>
+  <meta property="og:locale"      content="en_IN"/>
+
+  <!-- ░ Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="Shivam Singh — Software Engineer"/>
+  <meta name="twitter:description" content="Building SkillBridge — AI-powered skill exchange. Java · React · Spring Boot · ML. Open to opportunities."/>
+  <meta name="twitter:image"       content="https://shivam-singh-hash.github.io/portfolio/public/assets/og-image.png"/>
+
+  <!-- ░ Favicon (inline SVG as data URI — no external file needed) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23FFB800'/><text x='16' y='22' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%2306060c'>SS</text></svg>"/>
+  <link rel="alternate icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="/>
+  <meta name="theme-color" content="#FFB800"/>
+
+  <!-- ░ Structured Data (JSON-LD) for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shivam Singh",
+    "jobTitle": "Software Engineer",
+    "description": "3rd year B.Tech CS student at Galgotias University. Building AI-powered applications with Java, React, Spring Boot and Python.",
+    "url": "https://shivam-singh-hash.github.io/portfolio/",
+    "email": "shivamsinghrathore70@gmail.com",
+    "telephone": "+919451318146",
+    "sameAs": [
+      "https://github.com/Shivam-Singh-Hash",
+      "https://www.linkedin.com/in/contactshivamsingh/",
+      "https://leetcode.com/u/Shivam--Singh/"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Galgotias University"
+    },
+    "knowsAbout": ["Java", "Python", "React", "Spring Boot", "Machine Learning", "MySQL", "Node.js"]
+  }
+  </script>
+
+  <!-- ░ Fonts — display=swap prevents render blocking -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+
+  <!-- ░ Preload first frame only — rest lazy-loaded by JS -->
+  <link rel="preload" href="public/sequence/frame_00_delay-0.052s.png" as="image"/>
+</head>
+<body>
+
+  <!-- ░ SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
+
+  <!-- ░ FILM GRAIN CANVAS -->
+  <canvas id="grain-canvas" aria-hidden="true"></canvas>
+
+  <!-- ░ PAGE TRANSITION OVERLAY -->
+  <div class="page-transition" id="page-transition"></div>
+
+  <!-- ░ CURSOR -->
+  <div id="c-dot"></div>
+  <div id="c-ring"></div>
+  <div id="c-trail"></div>
+
+  <!-- ░ INTRO OVERLAY -->
+  <div id="intro">
+    <div class="intro-bar"></div>
+    <div class="intro-name">
+      <span class="in-l" data-i="0">S</span><span class="in-l" data-i="1">H</span><span class="in-l" data-i="2">I</span><span class="in-l" data-i="3">V</span><span class="in-l" data-i="4">A</span><span class="in-l" data-i="5">M</span>
+    </div>
+    <div class="intro-role">Software Engineer</div>
+    <div class="intro-stack">
+      <span>Java</span><span>React</span><span>Spring Boot</span><span>ML</span>
+    </div>
+    <div class="intro-pct" id="intro-pct">00</div>
+  </div>
+
+  <!-- ░ RESUME MODAL -->
+  <div id="resume-modal" class="rmodal" role="dialog" aria-modal="true" aria-label="Resume Preview">
+    <div class="rmodal-inner">
+      <button class="rmodal-close" id="rmodal-close" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="rmodal-header">
+        <div class="rmodal-title">Shivam Singh — Resume</div>
+        <div class="rmodal-sub">Shivam_Singh_Resume.pdf</div>
+      </div>
+      <div class="rmodal-body" id="rmodal-body">
+        <iframe id="rmodal-iframe" src="public/Shivam_Singh_Resume.pdf" title="Resume Preview" allowfullscreen></iframe>
+        <div class="rmodal-fallback" id="rmodal-fallback">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+          <p>PDF preview is blocked on <code>localhost</code> / <code>file://</code>.<br/>The resume will load correctly once deployed.</p>
+        </div>
+      </div>
+      <div class="rmodal-footer">
+        <a href="public/Shivam_Singh_Resume.pdf" download class="rmodal-btn rmodal-btn--dl">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download PDF
+        </a>
+        <a href="public/Shivam_Singh_Resume.pdf" target="_blank" rel="noreferrer" class="rmodal-btn rmodal-btn--view">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
+          Open in New Tab
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ░ EASTER EGG OVERLAY -->
+  <div id="easter-egg" aria-hidden="true">
+    <canvas id="easter-confetti"></canvas>
+    <div class="ee-content">
+      <div class="ee-emoji">🥚</div>
+      <h2 class="ee-title">You found it!</h2>
+      <p class="ee-sub">Hey, I see you checking my code! 👀</p>
+      <p class="ee-hint">Press <kbd>Escape</kbd> or click anywhere to close</p>
+    </div>
+  </div>
+
+  <!-- ░ SIDE RAIL -->
+  <div class="side-rail side-rail--l">
+    <span class="sr-label">PORTFOLIO</span>
+    <span class="sr-divider"></span>
+    <span class="sr-label" id="sr-scroll">00.0%</span>
+  </div>
+  <div class="side-rail side-rail--r">
+    <span class="sr-label" id="sr-section">01 / 07</span>
+    <span class="sr-divider"></span>
+    <span class="sr-label" id="sr-xy">000 / 000</span>
+  </div>
+
+  <!-- ░ NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="6" fill="rgba(255,184,0,0.12)" stroke="rgba(255,184,0,0.3)" stroke-width="1"/>
+        <text x="14" y="19" text-anchor="middle" fill="#FFB800" font-size="11" font-family="JetBrains Mono" font-weight="500">SS</text>
+      </svg>
+    </a>
+    <div class="nav-center">
+      <a href="#work" class="nl">Work</a>
+      <a href="#about" class="nl">About</a>
+      <a href="#timeline" class="nl">Journey</a>
+      <a href="#contact" class="nl">Contact</a>
+    </div>
+    <!-- Mobile menu button -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Mobile menu -->
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#work"     class="nm-link" onclick="closeMobileNav()">Work</a>
+      <a href="#about"    class="nm-link" onclick="closeMobileNav()">About</a>
+      <a href="#timeline" class="nm-link" onclick="closeMobileNav()">Journey</a>
+      <a href="#contact"  class="nm-link" onclick="closeMobileNav()">Contact</a>
+      <a href="public/Shivam_Singh_Resume.pdf" download class="nm-resume">Download Resume</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="nav-resume" id="nav-resume-btn" aria-label="Preview Resume">
+        <span>Preview CV</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ════════════════════════════════════════
+         SCROLLYTELLING SEQUENCE
+    ════════════════════════════════════════ -->
+    <div class="seq-wrap" id="scroll-sequence">
+      <div class="seq-sticky">
+        <canvas id="scrolly-canvas"></canvas>
+        <div class="seq-ink"></div>
+        <div id="loader">
+          <div class="ld-track"><div class="ld-fill" id="ld-fill"></div></div>
+          <span class="ld-num" id="ld-pct">0</span>
+        </div>
+      </div>
+      <div id="overlays">
+
+        <!-- HERO -->
+        <div class="ov" id="section-1">
+          <div class="hero-wrap">
+
+            <div class="hero-tag" id="available-badge" role="button" tabindex="0" aria-label="Click to scroll to contact">
+              <span class="ht-pulse"></span>
+              <span class="ht-txt">Available · Open to opportunities</span>
+            </div>
+            <div class="currently-building">
+              <span class="cb-icon">⚡</span>
+              <span class="cb-text">Currently building: <strong>SkillBridge v1</strong></span>
+              <span class="cb-dot"></span>
+              <span class="cb-status">In Progress</span>
+            </div>
+
+            <h1 class="hero-title">
+              <span class="ht-row">
+                <span class="ht-word split-text" data-text="Shivam">Shivam</span>
+              </span>
+              <span class="ht-row ht-row--accent">
+                <span class="ht-word split-text italic-word" data-text="Singh.">Singh.</span>
+              </span>
+            </h1>
+
+            <div class="hero-sub-row">
+              <div class="hero-line"></div>
+              <p class="hero-sub" id="hero-sub"><span id="hero-sub-typed"></span><span class="hero-cursor">|</span></p>
+            </div>
+
+            <div class="hero-ctas">
+              <a href="#work" class="cta-gold">
+                <span class="cta-gold-inner">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  See My Work
+                </span>
+              </a>
+              <a href="public/Shivam_Singh_Resume.pdf" download class="cta-ghost">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download CV
+              </a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="hm">
+                <div class="hm-val"><span class="count-up" data-target="835" data-cgpa="1">0</span></div>
+                <div class="hm-key">CGPA</div>
+              </div>
+              <div class="hm-dot"></div>
+              <div class="hm">
+                <div class="hm-val"><span class="count-up" data-target="3">0</span><span class="hm-plus">+</span></div>
+                <div class="hm-key">Projects</div>
+              </div>
+              <div class="hm-dot"></div>
+              <div class="hm">
+                <div class="hm-val"><span class="count-up" data-target="3">0</span><span class="hm-plus">×</span></div>
+                <div class="hm-key">Certified</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="hero-scroll-cue">
+            <div class="hsc-line"></div>
+            <span>SCROLL</span>
+          </div>
+        </div>
+
+        <!-- SCROLL CARD 01 -->
+        <div class="ov ov-mid" id="section-2">
+          <div class="sc sc--left">
+            <div class="sc-idx">01 /</div>
+            <h2 class="sc-title">Robust<br><em>Applications</em></h2>
+            <p class="sc-body">Clean architecture, optimised algorithms, and maximum system performance across the full stack.</p>
+            <div class="sc-chips"><span>Java</span><span>Spring Boot</span><span>Python</span><span>React</span></div>
+          </div>
+        </div>
+
+        <!-- SCROLL CARD 02 -->
+        <div class="ov ov-mid" id="section-3">
+          <div class="sc sc--right">
+            <div class="sc-idx">02 /</div>
+            <h2 class="sc-title">ML &amp;<br><em>Modern Web</em></h2>
+            <p class="sc-body">AI logic and modern frameworks to build intelligent, scalable, and beautifully crafted solutions.</p>
+            <div class="sc-chips"><span>ML</span><span>NumPy</span><span>Pandas</span><span>Node.js</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         MARQUEE
+    ════════════════════════════════════════ -->
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee-inner">
+        <div class="mq-set"><span>Java</span><span class="mx">✦</span><span>Python</span><span class="mx">✦</span><span>React</span><span class="mx">✦</span><span>Spring Boot</span><span class="mx">✦</span><span>Node.js</span><span class="mx">✦</span><span>MySQL</span><span class="mx">✦</span><span>Machine Learning</span><span class="mx">✦</span><span>Git/GitHub</span><span class="mx">✦</span><span>REST APIs</span><span class="mx">✦</span></div>
+        <div class="mq-set"><span>Java</span><span class="mx">✦</span><span>Python</span><span class="mx">✦</span><span>React</span><span class="mx">✦</span><span>Spring Boot</span><span class="mx">✦</span><span>Node.js</span><span class="mx">✦</span><span>MySQL</span><span class="mx">✦</span><span>Machine Learning</span><span class="mx">✦</span><span>Git/GitHub</span><span class="mx">✦</span><span>REST APIs</span><span class="mx">✦</span></div>
+        <div class="mq-set"><span>Java</span><span class="mx">✦</span><span>Python</span><span class="mx">✦</span><span>React</span><span class="mx">✦</span><span>Spring Boot</span><span class="mx">✦</span><span>Node.js</span><span class="mx">✦</span><span>MySQL</span><span class="mx">✦</span><span>Machine Learning</span><span class="mx">✦</span><span>Git/GitHub</span><span class="mx">✦</span><span>REST APIs</span><span class="mx">✦</span></div>
+        <div class="mq-set"><span>Java</span><span class="mx">✦</span><span>Python</span><span class="mx">✦</span><span>React</span><span class="mx">✦</span><span>Spring Boot</span><span class="mx">✦</span><span>Node.js</span><span class="mx">✦</span><span>MySQL</span><span class="mx">✦</span><span>Machine Learning</span><span class="mx">✦</span><span>Git/GitHub</span><span class="mx">✦</span><span>REST APIs</span><span class="mx">✦</span></div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         PROJECTS
+    ════════════════════════════════════════ -->
+    <section class="work-sec" id="work">
+
+      <div class="work-header">
+        <div class="wh-label">
+          <span class="whl-line"></span>
+          <span>Selected Work</span>
+          <span class="whl-line"></span>
+        </div>
+        <h2 class="wh-title">Things I've <em>Built</em></h2>
+        <div class="wh-count">( 03 Projects )</div>
+      </div>
+
+
+      <!-- ── PROJECT 01 — SkillBridge ── -->
+      <div class="proj" id="proj-01">
+        <div class="proj-number">01</div>
+
+        <div class="proj-visual">
+          <div class="pv-frame pv-frame--sb">
+            <!-- SkillBridge live mockup -->
+            <div class="sb">
+              <div class="sb-bar">
+                <span class="sb-logo">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+                  SkillBridge
+                </span>
+                <div class="sb-tabs">
+                  <span class="sb-tab on">Discover</span>
+                  <span class="sb-tab">Barter</span>
+                  <span class="sb-tab">AI</span>
+                </div>
+                <div class="sb-ava"></div>
+              </div>
+              <div class="sb-cols">
+                <div class="sb-col">
+                  <div class="sb-col-hd">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#FFB800"/></svg>
+                    AI Career Guide
+                  </div>
+                  <div class="sb-msg">
+                    <div class="sb-bot-av"></div>
+                    <div class="sb-bbl">Learn <b>System Design</b> — fills your biggest gap.</div>
+                  </div>
+                  <div class="sb-msg sb-msg--me">
+                    <div class="sb-bbl sb-bbl--me">Show matched partners</div>
+                  </div>
+                  <div class="sb-msg">
+                    <div class="sb-bot-av"></div>
+                    <div class="sb-bbl">Found <b>3 matches</b> · <span class="sb-gold">94% fit</span> ✦</div>
+                  </div>
+                  <div class="sb-dots"><span></span><span></span><span></span></div>
+                </div>
+                <div class="sb-col">
+                  <div class="sb-col-hd">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#4f9eff"/></svg>
+                    Skill Matches
+                  </div>
+                  <div class="sb-card sb-card--on">
+                    <div class="sb-av sb-av--a"></div>
+                    <div class="sb-ci">
+                      <div class="sb-cn">Priya S.</div>
+                      <div class="sb-cx"><span class="sb-t">React</span><svg width="6" height="6" viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span class="sb-l">Java</span></div>
+                    </div>
+                    <div class="sb-pct">94%</div>
+                  </div>
+                  <div class="sb-card">
+                    <div class="sb-av sb-av--b"></div>
+                    <div class="sb-ci">
+                      <div class="sb-cn">Arjun M.</div>
+                      <div class="sb-cx"><span class="sb-t">ML</span><svg width="6" height="6" viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span class="sb-l">Spring Boot</span></div>
+                    </div>
+                    <div class="sb-pct">87%</div>
+                  </div>
+                  <div class="sb-prog">
+                    <div class="sb-pl">React Basics · 6/10</div>
+                    <div class="sb-pt"><div class="sb-pf"></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="sb-foot">
+                <span><b>2.4k</b> Users</span>
+                <span class="sb-fsep"></span>
+                <span><b>840</b> Matches</span>
+                <span class="sb-fsep"></span>
+                <span><b>97%</b> Satisfaction</span>
+                <span class="sb-fsep"></span>
+                <span class="sb-live">● LIVE AI</span>
+              </div>
+            </div>
+            <div class="pv-shine"></div>
+            <div class="pv-tag">Featured · In Development</div>
+          </div>
+          <div class="proj-index-ghost">01</div>
+        </div>
+
+        <div class="proj-info">
+          <div class="pi-cat">AI-Powered Platform</div>
+          <h3 class="pi-title">SkillBridge</h3>
+          <p class="pi-desc">An intelligent career &amp; skill-exchange ecosystem — users barter skills 1-on-1, get AI-driven career roadmaps, schedule sessions, and build reputation. <em>LinkedIn + Duolingo + Barter + AI Mentor.</em></p>
+          <div class="pi-features">
+            <div class="pif"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3"/></svg>AI Guidance</div>
+            <div class="pif"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Skill Barter</div>
+            <div class="pif"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Live Chat</div>
+            <div class="pif"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Scheduler</div>
+          </div>
+          <div class="pi-stack"><span>React</span><span>Spring Boot</span><span>MySQL</span><span>AI/ML</span><span>WebSocket</span><span>JWT</span></div>
+          <a href="skillbridge.html" class="pi-btn">
+            <span>View Case Study</span>
+            <div class="pi-btn-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-sep"></div>
+
+      <!-- ── PROJECT 02 — HealthCure ── -->
+      <div class="proj proj--flip" id="proj-02">
+        <div class="proj-number">02</div>
+
+        <div class="proj-visual">
+          <div class="pv-frame">
+            <div class="pv-img" style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop')"></div>
+            <div class="pv-scan"></div>
+            <div class="pv-shine"></div>
+            <div class="pv-tag">Desktop App</div>
+          </div>
+          <div class="proj-index-ghost">02</div>
+        </div>
+
+        <div class="proj-info">
+          <div class="pi-cat">Hospital Management</div>
+          <h3 class="pi-title">HealthCure</h3>
+          <p class="pi-desc">Comprehensive system for patient records, appointment scheduling, and doctor management — secure Java backend with real-time SQL database integration.</p>
+          <div class="pi-stack"><span>Java</span><span>Swing</span><span>SQL</span><span>JDBC</span></div>
+          <a href="healthcure.html" class="pi-btn">
+            <span>View Case Study</span>
+            <div class="pi-btn-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-sep"></div>
+
+      <!-- ── PROJECT 03 — YouTube Downloader ── -->
+      <div class="proj" id="proj-03">
+        <div class="proj-number">03</div>
+
+        <div class="proj-visual">
+          <div class="pv-frame pv-frame--yt">
+            <div class="pv-img" id="yt-thumb" style="background-image:url('public/assets/home.png');background-size:cover;background-position:center top;background-color:#0a0a14;"></div>
+            <!-- Floating UI -->
+            <div class="yt-ui">
+              <div class="yt-topbar">
+                <span class="yt-dot r"></span><span class="yt-dot y"></span><span class="yt-dot g"></span>
+                <span class="yt-addr">youtube-downloader.app</span>
+              </div>
+              <div class="yt-body">
+                <div class="yt-inp">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="#ff0000"><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.895 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.105 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg>
+                  <span>Paste YouTube URL...</span>
+                </div>
+                <div class="yt-bar"><div class="yt-bar-fill"></div></div>
+                <div class="yt-fmts">
+                  <span class="yt-fmt on">MP4 1080p</span>
+                  <span class="yt-fmt">MP3</span>
+                  <span class="yt-fmt">720p</span>
+                </div>
+              </div>
+            </div>
+            <div class="pv-scan"></div>
+            <div class="pv-shine"></div>
+            <div class="pv-tag pv-tag--gold">Python · Open Source</div>
+          </div>
+          <div class="proj-index-ghost">03</div>
+        </div>
+
+        <div class="proj-info">
+          <div class="pi-cat">Python Utility Tool</div>
+          <h3 class="pi-title">YouTube<br>Downloader</h3>
+          <p class="pi-desc">High-performance video and audio extraction — multi-format support, real-time progress tracking, quality selection, and a clean Tkinter UI built for speed.</p>
+          <div class="pi-stack"><span>Python</span><span>Tkinter</span><span>pytube</span><span>FFmpeg</span></div>
+          <a href="https://github.com/Shivam-Singh-Hash/Youtube-Downloader" target="_blank" class="pi-btn pi-btn--gh">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            <span>View on GitHub</span>
+            <div class="pi-btn-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ════════════════════════════════════════
+         ABOUT
+    ════════════════════════════════════════ -->
+    <section class="about-sec" id="about">
+
+      <div class="as-bg-word" aria-hidden="true">ABOUT</div>
+
+      <div class="as-top">
+        <div class="as-label"><span class="whl-line"></span>Who I Am</div>
+        <h2 class="as-title" id="about-title">A dev who<br>obsesses over <em>craft.</em></h2>
+      </div>
+
+      <div class="as-grid">
+
+        <div class="as-bio tilt-card">
+          <p>I'm <strong>Shivam Singh</strong> — 3rd year B.Tech (CS) at Galgotias University with a <strong class="gold">8.35 CGPA</strong>. I build end-to-end systems — optimised Java backends to pixel-perfect React frontends — with a deep passion for Machine Learning.</p>
+          <p>I believe great software is invisible to the user and unforgettable in experience.</p>
+
+          <div class="edu-stack">
+            <div class="edu-row">
+              <span class="edu-ico">🎓</span>
+              <div>
+                <div class="edu-name">Galgotias University</div>
+                <div class="edu-meta">B.Tech Computer Science · 3rd Year</div>
+              </div>
+              <div class="edu-score gold">8.35</div>
+            </div>
+            <div class="edu-row">
+              <span class="edu-ico">📘</span>
+              <div>
+                <div class="edu-name">Delhi Public School</div>
+                <div class="edu-meta">12th Standard</div>
+              </div>
+              <div class="edu-score">75%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="as-exp tilt-card">
+          <div class="exp-head">Experience</div>
+          <div class="exp-item">
+            <div class="exp-stripe exp-stripe--gold"></div>
+            <div>
+              <div class="exp-row"><span class="exp-title">AI-ML &amp; Web Dev Intern</span><span class="exp-date">Apr – Sep 2025</span></div>
+              <div class="exp-co">AICTE EduSkills · Google-supported</div>
+              <p class="exp-desc">Python data preprocessing, responsive web apps with modern frontend technologies.</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-stripe exp-stripe--blue"></div>
+            <div>
+              <div class="exp-row"><span class="exp-title">Academic Developer</span><span class="exp-date">2022–Present</span></div>
+              <div class="exp-co">Galgotias University</div>
+              <p class="exp-desc">Java &amp; Python development, data structures and algorithmic problem solving.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="as-ach tilt-card">
+          <div class="exp-head">Achievements</div>
+          <div class="ach-item"><span class="ach-icon">🏅</span><span>Google Android Developer — Virtual Internship</span></div>
+          <div class="ach-item"><span class="ach-icon">🏅</span><span>Oracle Academy — Database Management Certified</span></div>
+          <div class="ach-item"><span class="ach-icon">🏅</span><span>JP Morgan — Software Engineering Job Simulation</span></div>
+        </div>
+
+      </div>
+
+      <!-- Skills -->
+      <div class="skills-sec">
+        <div class="sk-label">Core Tech Stack</div>
+        <div class="sk-cloud" id="sk-cloud">
+          <span class="sk" style="--c:#FFB800;--s:1.18">Java</span>
+          <span class="sk" style="--c:#60a5fa;--s:1.12">Python</span>
+          <span class="sk" style="--c:#f472b6;--s:1.06">React.js</span>
+          <span class="sk" style="--c:#34d399;--s:1.0">Spring Boot</span>
+          <span class="sk" style="--c:#a78bfa;--s:0.95">Node.js</span>
+          <span class="sk" style="--c:#fb923c;--s:0.9">MySQL</span>
+          <span class="sk" style="--c:#f87171;--s:0.88">JavaScript</span>
+          <span class="sk" style="--c:#38bdf8;--s:0.84">Pandas</span>
+          <span class="sk" style="--c:#FFB800;--s:0.80">NumPy</span>
+          <span class="sk" style="--c:#c084fc;--s:0.78">Machine Learning</span>
+          <span class="sk" style="--c:#4ade80;--s:0.75">Git/GitHub</span>
+          <span class="sk" style="--c:#fbbf24;--s:0.72">HTML5/CSS3</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ════════════════════════════════════════
+         FOOTER / CONTACT
+    ════════════════════════════════════════ -->
+
+    <!-- ════════════════════════════════════════
+         TIMELINE
+    ════════════════════════════════════════ -->
+    <section class="timeline-sec" id="timeline">
+      <div class="tl-bg-word" aria-hidden="true">JOURNEY</div>
+      <div class="tl-header">
+        <div class="tl-eyebrow"><span class="whl-line"></span>My Journey<span class="whl-line"></span></div>
+        <h2 class="tl-title">The Road <em>So Far</em></h2>
+      </div>
+      <div class="tl-wrap">
+        <div class="tl-spine"></div>
+
+        <!-- Item 1 -->
+        <div class="tl-item tl-item--left">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-card">
+            <div class="tl-year">2022</div>
+            <div class="tl-icon">🎓</div>
+            <h3 class="tl-card-title">Started B.Tech</h3>
+            <p class="tl-card-sub">Galgotias University · Computer Science</p>
+            <p class="tl-card-body">Began the journey into Computer Science — discovered a passion for Java, problem solving, and building things from scratch.</p>
+            <div class="tl-tags"><span>Java Basics</span><span>C++</span><span>DSA</span></div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="tl-item tl-item--right">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-card">
+            <div class="tl-year">2023</div>
+            <div class="tl-icon">💻</div>
+            <h3 class="tl-card-title">First Real Projects</h3>
+            <p class="tl-card-sub">Academic Developer · Galgotias University</p>
+            <p class="tl-card-body">Built HealthCure — a full hospital management system in Java with Swing and SQL. First taste of end-to-end software development.</p>
+            <div class="tl-tags"><span>Java</span><span>Swing</span><span>SQL</span><span>JDBC</span></div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="tl-item tl-item--left">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-card">
+            <div class="tl-year">2024</div>
+            <div class="tl-icon">🌐</div>
+            <h3 class="tl-card-title">Full-Stack & Web Dev</h3>
+            <p class="tl-card-sub">Self-taught · React · Node.js · Spring Boot</p>
+            <p class="tl-card-body">Dived deep into full-stack development. Built the Myntra Clone with React, Node.js and MySQL. Started learning Python for data science and ML.</p>
+            <div class="tl-tags"><span>React</span><span>Node.js</span><span>MySQL</span><span>Python</span></div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="tl-item tl-item--right">
+          <div class="tl-dot tl-dot--gold"><div class="tl-dot-inner"></div></div>
+          <div class="tl-card tl-card--highlight">
+            <div class="tl-year tl-year--gold">2025</div>
+            <div class="tl-icon">🤖</div>
+            <h3 class="tl-card-title">AI-ML Internship</h3>
+            <p class="tl-card-sub">AICTE EduSkills · Google-supported</p>
+            <p class="tl-card-body">Got selected for the Google-supported AICTE virtual internship. Worked on Python data preprocessing, built responsive web apps and gained hands-on AI/ML experience.</p>
+            <div class="tl-tags"><span>Python</span><span>ML</span><span>Pandas</span><span>NumPy</span></div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="tl-item tl-item--left">
+          <div class="tl-dot tl-dot--pulse"><div class="tl-dot-inner"></div></div>
+          <div class="tl-card tl-card--current">
+            <div class="tl-year tl-year--gold">Now</div>
+            <div class="tl-icon">⚡</div>
+            <h3 class="tl-card-title">Building SkillBridge</h3>
+            <p class="tl-card-sub">3rd Year · 8.35 CGPA · Open to Opportunities</p>
+            <p class="tl-card-body">Designing and building SkillBridge — an AI-powered career & skill exchange platform. Combining everything I've learned into one ambitious product.</p>
+            <div class="tl-tags"><span>React</span><span>Spring Boot</span><span>AI/ML</span><span>WebSocket</span></div>
+            <div class="tl-current-badge">● Currently Here</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         SKILL BARS
+    ════════════════════════════════════════ -->
+    <section class="skillbars-sec" id="skills">
+      <div class="sb-header">
+        <div class="sb-eyebrow"><span class="whl-line"></span>Proficiency<span class="whl-line"></span></div>
+        <h2 class="sb-sec-title">Skills &amp; <em>Expertise</em></h2>
+      </div>
+      <div class="skillbars-grid">
+
+        <div class="skillbars-col">
+          <div class="sbar-group-label">Languages</div>
+          <div class="sbar" data-pct="88">
+            <div class="sbar-info"><span class="sbar-name">Java</span><span class="sbar-pct">88%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#b07219"></div></div>
+          </div>
+          <div class="sbar" data-pct="82">
+            <div class="sbar-info"><span class="sbar-name">Python</span><span class="sbar-pct">82%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#3572A5"></div></div>
+          </div>
+          <div class="sbar" data-pct="78">
+            <div class="sbar-info"><span class="sbar-name">JavaScript</span><span class="sbar-pct">78%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#f1e05a"></div></div>
+          </div>
+          <div class="sbar" data-pct="90">
+            <div class="sbar-info"><span class="sbar-name">HTML5 / CSS3</span><span class="sbar-pct">90%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#e34c26"></div></div>
+          </div>
+
+          <div class="sbar-group-label" style="margin-top:2rem">Data &amp; AI</div>
+          <div class="sbar" data-pct="75">
+            <div class="sbar-info"><span class="sbar-name">Machine Learning</span><span class="sbar-pct">75%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#c084fc"></div></div>
+          </div>
+          <div class="sbar" data-pct="80">
+            <div class="sbar-info"><span class="sbar-name">Pandas / NumPy</span><span class="sbar-pct">80%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#38bdf8"></div></div>
+          </div>
+          <div class="sbar" data-pct="78">
+            <div class="sbar-info"><span class="sbar-name">MySQL</span><span class="sbar-pct">78%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#fb923c"></div></div>
+          </div>
+        </div>
+
+        <div class="skillbars-col">
+          <div class="sbar-group-label">Frameworks &amp; Tools</div>
+          <div class="sbar" data-pct="85">
+            <div class="sbar-info"><span class="sbar-name">React.js</span><span class="sbar-pct">85%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#61dafb"></div></div>
+          </div>
+          <div class="sbar" data-pct="80">
+            <div class="sbar-info"><span class="sbar-name">Spring Boot</span><span class="sbar-pct">80%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#34d399"></div></div>
+          </div>
+          <div class="sbar" data-pct="76">
+            <div class="sbar-info"><span class="sbar-name">Node.js</span><span class="sbar-pct">76%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#68a063"></div></div>
+          </div>
+          <div class="sbar" data-pct="85">
+            <div class="sbar-info"><span class="sbar-name">Git / GitHub</span><span class="sbar-pct">85%</span></div>
+            <div class="sbar-track"><div class="sbar-fill" style="--c:#FFB800"></div></div>
+          </div>
+
+          <div class="sbar-group-label" style="margin-top:2rem">Radial Overview</div>
+          <div class="radial-grid">
+            <div class="radial-item">
+              <svg viewBox="0 0 80 80" class="radial-svg">
+                <circle cx="40" cy="40" r="30" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/>
+                <circle cx="40" cy="40" r="30" fill="none" stroke="#b07219" stroke-width="6"
+                  stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="188.5"
+                  class="radial-ring" data-pct="88" transform="rotate(-90 40 40)"/>
+              </svg>
+              <div class="radial-label">Java</div>
+              <div class="radial-val">88%</div>
+            </div>
+            <div class="radial-item">
+              <svg viewBox="0 0 80 80" class="radial-svg">
+                <circle cx="40" cy="40" r="30" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/>
+                <circle cx="40" cy="40" r="30" fill="none" stroke="#3572A5" stroke-width="6"
+                  stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="188.5"
+                  class="radial-ring" data-pct="82" transform="rotate(-90 40 40)"/>
+              </svg>
+              <div class="radial-label">Python</div>
+              <div class="radial-val">82%</div>
+            </div>
+            <div class="radial-item">
+              <svg viewBox="0 0 80 80" class="radial-svg">
+                <circle cx="40" cy="40" r="30" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/>
+                <circle cx="40" cy="40" r="30" fill="none" stroke="#61dafb" stroke-width="6"
+                  stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="188.5"
+                  class="radial-ring" data-pct="85" transform="rotate(-90 40 40)"/>
+              </svg>
+              <div class="radial-label">React</div>
+              <div class="radial-val">85%</div>
+            </div>
+            <div class="radial-item">
+              <svg viewBox="0 0 80 80" class="radial-svg">
+                <circle cx="40" cy="40" r="30" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/>
+                <circle cx="40" cy="40" r="30" fill="none" stroke="#34d399" stroke-width="6"
+                  stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="188.5"
+                  class="radial-ring" data-pct="80" transform="rotate(-90 40 40)"/>
+              </svg>
+              <div class="radial-label">Spring</div>
+              <div class="radial-val">80%</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CONTACT FORM
+    ════════════════════════════════════════ -->
+
+
+    <!-- ════════════════════════════════════════
+         TESTIMONIALS
+    ════════════════════════════════════════ -->
+    <section class="testi-sec" id="testimonials">
+      <div class="testi-bg-word" aria-hidden="true">WORDS</div>
+      <div class="testi-header">
+        <div class="testi-eyebrow"><span class="whl-line"></span>Kind Words<span class="whl-line"></span></div>
+        <h2 class="testi-title">What People <em>Say</em></h2>
+      </div>
+
+      <div class="testi-grid">
+
+        <div class="testi-card">
+          <div class="testi-quote-icon">"</div>
+          <p class="testi-body">Shivam demonstrated exceptional problem-solving skills during the AICTE internship. His Python data preprocessing work was clean, well-documented, and delivered ahead of schedule. A highly motivated developer with great attention to detail.</p>
+          <div class="testi-author">
+            <div class="testi-avatar testi-avatar--a">AK</div>
+            <div>
+              <div class="testi-name">Ankit Kumar</div>
+              <div class="testi-role">Mentor · AICTE EduSkills · Google-supported Program</div>
+            </div>
+            <div class="testi-platform">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card testi-card--gold">
+          <div class="testi-quote-icon">"</div>
+          <p class="testi-body">Working with Shivam on the HealthCure project was a great experience. He built a robust Java backend that handled all our requirements with clean JDBC integration. His understanding of system design is impressive for a 3rd-year student.</p>
+          <div class="testi-author">
+            <div class="testi-avatar testi-avatar--b">PS</div>
+            <div>
+              <div class="testi-name">Priya Sharma</div>
+              <div class="testi-role">Project Collaborator · Galgotias University</div>
+            </div>
+            <div class="testi-platform">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-quote-icon">"</div>
+          <p class="testi-body">Shivam's SkillBridge concept is genuinely innovative — the AI-powered skill matching is well thought out. He writes clean React components and understands full-stack architecture deeply. One of the most driven developers I have mentored.</p>
+          <div class="testi-author">
+            <div class="testi-avatar testi-avatar--c">RV</div>
+            <div>
+              <div class="testi-name">Rahul Verma</div>
+              <div class="testi-role">Senior Developer · Tech Community Mentor</div>
+            </div>
+            <div class="testi-platform">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Stats bar -->
+      <div class="testi-stats">
+        <div class="testi-stat">
+          <div class="testi-stat-val">8.35</div>
+          <div class="testi-stat-lbl">CGPA</div>
+        </div>
+        <div class="testi-stat-sep"></div>
+        <div class="testi-stat">
+          <div class="testi-stat-val">3+</div>
+          <div class="testi-stat-lbl">Projects Shipped</div>
+        </div>
+        <div class="testi-stat-sep"></div>
+        <div class="testi-stat">
+          <div class="testi-stat-val">174+</div>
+          <div class="testi-stat-lbl">LeetCode Solved</div>
+        </div>
+        <div class="testi-stat-sep"></div>
+        <div class="testi-stat">
+          <div class="testi-stat-val">3×</div>
+          <div class="testi-stat-lbl">Certified</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ════════════════════════════════════════
+         GITHUB + LEETCODE STATS
+    ════════════════════════════════════════ -->
+    <section class="stats-sec" id="stats">
+
+      <div class="stats-header">
+        <div class="stats-eyebrow">
+          <span class="whl-line"></span>
+          <span>Live Activity</span>
+          <span class="whl-line"></span>
+        </div>
+        <h2 class="stats-title">Code in <em>Numbers</em></h2>
+      </div>
+
+      <div class="stats-grid">
+
+        <!-- ── GITHUB CARD ── -->
+        <div class="stat-card stat-card--gh" id="gh-card">
+          <div class="sc-header">
+            <div class="sc-platform">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--snow)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </div>
+            <div class="sc-live-dot"></div>
+          </div>
+
+          <div class="sc-profile">
+            <div class="sc-avatar" id="gh-avatar">
+              <div class="sc-avatar-placeholder">SS</div>
+            </div>
+            <div class="sc-profile-info">
+              <div class="sc-name" id="gh-name">Shivam Singh</div>
+              <div class="sc-handle">@Shivam-Singh-Hash</div>
+              <div class="sc-bio" id="gh-bio">Loading...</div>
+            </div>
+          </div>
+
+          <div class="sc-stats-row">
+            <div class="sc-stat">
+              <div class="sc-stat-val" id="gh-repos">—</div>
+              <div class="sc-stat-lbl">Repos</div>
+            </div>
+            <div class="sc-stat-sep"></div>
+            <div class="sc-stat">
+              <div class="sc-stat-val" id="gh-followers">—</div>
+              <div class="sc-stat-lbl">Followers</div>
+            </div>
+            <div class="sc-stat-sep"></div>
+            <div class="sc-stat">
+              <div class="sc-stat-val" id="gh-stars">—</div>
+              <div class="sc-stat-lbl">Stars</div>
+            </div>
+            <div class="sc-stat-sep"></div>
+            <div class="sc-stat">
+              <div class="sc-stat-val" id="gh-following">—</div>
+              <div class="sc-stat-lbl">Following</div>
+            </div>
+          </div>
+
+          <!-- Contribution graph (last 20 weeks via GitHub readme stats) -->
+          <div class="sc-contrib-wrap">
+            <div class="sc-contrib-label">Contribution Activity</div>
+            <div class="sc-contrib-graph" id="gh-contrib-graph">
+              <!-- Generated by JS -->
+            </div>
+          </div>
+
+          <!-- Top Languages -->
+          <div class="sc-langs-wrap">
+            <div class="sc-contrib-label">Top Languages</div>
+            <div class="sc-langs" id="gh-langs">
+              <div class="sc-lang-loading">Fetching...</div>
+            </div>
+          </div>
+
+          <a href="https://github.com/Shivam-Singh-Hash" target="_blank" class="sc-btn sc-btn--gh">
+            View GitHub Profile
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- ── LEETCODE CARD ── -->
+        <div class="stat-card stat-card--lc" id="lc-card">
+          <div class="sc-header">
+            <div class="sc-platform">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--snow)" stroke-width="1.8"><path d="m12.1 22.5-9-3.2a2 2 0 0 1-1.3-1.8V9.8a2 2 0 0 1 1-1.7l8.6-5.5a2 2 0 0 1 2.1 0l8.6 5.5a2 2 0 0 1 1 1.7v7.7a2 2 0 0 1-1.3 1.8l-9 3.2a2 2 0 0 1-1.4 0Z"/><path d="m22 9.8-10 6.4-10-6.4"/></svg>
+              <span>LeetCode</span>
+            </div>
+            <div class="sc-live-dot"></div>
+          </div>
+
+          <div class="sc-profile">
+            <div class="sc-avatar sc-avatar--lc">
+              <span>SS</span>
+            </div>
+            <div class="sc-profile-info">
+              <div class="sc-name">Shivam Singh</div>
+              <div class="sc-handle">@Shivam--Singh</div>
+              <div class="sc-bio" id="lc-rank">Loading rank...</div>
+            </div>
+          </div>
+
+          <!-- Total solved big number -->
+          <div class="lc-solved-wrap">
+            <div class="lc-solved-circle">
+              <svg viewBox="0 0 120 120" class="lc-ring-svg">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"/>
+                <circle cx="60" cy="60" r="50" fill="none" stroke="var(--gold)" stroke-width="8"
+                  stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"
+                  id="lc-ring" class="lc-ring-path" transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="lc-solved-inner">
+                <span class="lc-solved-num" id="lc-total">0</span>
+                <span class="lc-solved-lbl">Solved</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Difficulty breakdown -->
+          <div class="lc-diff-grid">
+            <div class="lc-diff lc-diff--easy">
+              <div class="lc-diff-bar-wrap">
+                <div class="lc-diff-bar" id="lc-easy-bar"></div>
+              </div>
+              <div class="lc-diff-info">
+                <span class="lc-diff-label">Easy</span>
+                <span class="lc-diff-val" id="lc-easy">—</span>
+              </div>
+            </div>
+            <div class="lc-diff lc-diff--med">
+              <div class="lc-diff-bar-wrap">
+                <div class="lc-diff-bar" id="lc-med-bar"></div>
+              </div>
+              <div class="lc-diff-info">
+                <span class="lc-diff-label">Medium</span>
+                <span class="lc-diff-val" id="lc-med">—</span>
+              </div>
+            </div>
+            <div class="lc-diff lc-diff--hard">
+              <div class="lc-diff-bar-wrap">
+                <div class="lc-diff-bar" id="lc-hard-bar"></div>
+              </div>
+              <div class="lc-diff-info">
+                <span class="lc-diff-label">Hard</span>
+                <span class="lc-diff-val" id="lc-hard">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Acceptance rate + streak -->
+          <div class="sc-stats-row" style="margin-top:1.5rem">
+            <div class="sc-stat">
+              <div class="sc-stat-val" id="lc-accept">—</div>
+              <div class="sc-stat-lbl">Acceptance</div>
+            </div>
+            <div class="sc-stat-sep"></div>
+            <div class="sc-stat">
+              <div class="sc-stat-val" id="lc-contest">—</div>
+              <div class="sc-stat-lbl">Total Solved</div>
+            </div>
+            <div class="sc-stat-sep"></div>
+            <div class="sc-stat">
+              <div class="sc-stat-val" id="lc-contrib">—</div>
+              <div class="sc-stat-lbl">Hard Solved</div>
+            </div>
+          </div>
+
+          <a href="https://leetcode.com/u/Shivam--Singh/" target="_blank" class="sc-btn sc-btn--lc">
+            View LeetCode Profile
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="contact-sec" id="contact">
+      <div class="cf-ambient"></div>
+      <div class="cf-inner">
+        <div class="cf-left">
+          <div class="cf-eyebrow"><span class="whl-line"></span>Get In Touch<span class="whl-line"></span></div>
+          <h2 class="cf-title">Let's build<br>something <em>great.</em></h2>
+          <p class="cf-desc">Have a project in mind, want to collaborate, or just want to say hi? Drop a message — I read every single one.</p>
+          <div class="cf-details">
+            <div class="cf-detail-item" onclick="copyEmail()" style="cursor:pointer" title="Click to copy email">
+              <div class="cf-detail-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div>
+                <div class="cf-detail-label">Email <span style="color:var(--dim);font-size:.58rem">(click to copy)</span></div>
+                <div class="cf-detail-val">shivamsinghrathore70@gmail.com</div>
+              </div>
+            </div>
+            <a href="https://www.linkedin.com/in/contactshivamsingh/" target="_blank" class="cf-detail-item">
+              <div class="cf-detail-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div>
+                <div class="cf-detail-label">LinkedIn</div>
+                <div class="cf-detail-val">contactshivamsingh</div>
+              </div>
+            </a>
+            <a href="https://github.com/Shivam-Singh-Hash" target="_blank" class="cf-detail-item">
+              <div class="cf-detail-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              </div>
+              <div>
+                <div class="cf-detail-label">GitHub</div>
+                <div class="cf-detail-val">Shivam-Singh-Hash</div>
+              </div>
+            </a>
+            <a href="tel:+919451318146" class="cf-detail-item">
+              <div class="cf-detail-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="cf-detail-label">Phone</div>
+                <div class="cf-detail-val">+91 94513 18146</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="cf-right">
+          <form class="cf-form" id="contact-form">
+            <div class="cf-row">
+              <div class="cf-field">
+                <label class="cf-label" for="cf-name">Your Name</label>
+                <input type="text" id="cf-name" name="from_name" class="cf-input" placeholder="John Doe" required/>
+              </div>
+              <div class="cf-field">
+                <label class="cf-label" for="cf-email">Your Email</label>
+                <input type="email" id="cf-email" name="reply_to" class="cf-input" placeholder="john@example.com" required/>
+              </div>
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" for="cf-subject">Subject</label>
+              <input type="text" id="cf-subject" name="subject" class="cf-input" placeholder="Project Collaboration / Opportunity..." required/>
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" for="cf-msg">Message</label>
+              <textarea id="cf-msg" name="message" class="cf-textarea" placeholder="Tell me about your project or opportunity..." rows="5" required></textarea>
+            </div>
+            <button type="submit" class="cf-submit" id="cf-submit">
+              <span class="cf-submit-inner" id="cf-btn-text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+                Send Message
+              </span>
+              <div class="cf-submit-glow"></div>
+            </button>
+            <div class="cf-status" id="cf-status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer class="footer" id="footer">
+      <div class="ft-ambient"></div>
+      <div class="ft-body">
+        <div class="ft-eyebrow"><span class="whl-line"></span>Let's collaborate</div>
+        <h2 class="ft-title">Got a project<br>in <em>mind?</em></h2>
+        <a href="mailto:shivamsinghrathore70@gmail.com" class="ft-email" onclick="event.preventDefault();copyEmail()">
+          <span>shivamsinghrathore70@gmail.com</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.4;margin-right:.25rem"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="ft-links">
+          <a href="https://github.com/Shivam-Singh-Hash" target="_blank" rel="noreferrer" class="ftl">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/contactshivamsingh/" target="_blank" rel="noreferrer" class="ftl">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://leetcode.com/u/Shivam--Singh/" target="_blank" rel="noreferrer" class="ftl">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12.1 22.5-9-3.2a2 2 0 0 1-1.3-1.8V9.8a2 2 0 0 1 1-1.7l8.6-5.5a2 2 0 0 1 2.1 0l8.6 5.5a2 2 0 0 1 1 1.7v7.7a2 2 0 0 1-1.3 1.8l-9 3.2a2 2 0 0 1-1.4 0Z"/><path d="m22 9.8-10 6.4-10-6.4"/></svg>
+            LeetCode
+          </a>
+        </div>
+        <div class="ft-bottom">
+          <span id="copyright-year">© 2025 Shivam Singh</span>
+          <span class="ft-sep">·</span>
+          <span class="ft-craft">Designed &amp; coded with obsession ✦</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ░ FLOATING BUTTONS -->
+  <div class="floating-btns">
+    <a href="https://wa.me/919451318146?text=Hi%20Shivam%2C%20I%20saw%20your%20portfolio!" target="_blank" rel="noreferrer" class="fab fab--wa" aria-label="WhatsApp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.847L.057 23.428a.5.5 0 0 0 .623.603l5.699-1.495A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.205-1.437l-.371-.22-3.862 1.013 1.03-3.727-.242-.386A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+    </a>
+    <button class="fab fab--top" id="back-to-top" aria-label="Back to top">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ░ COPY TOAST -->
+  <div class="copy-toast" id="copy-toast">✓ Email copied!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

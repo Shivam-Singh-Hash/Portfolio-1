@@ -1,0 +1,17 @@
+# Git ignore for Portfolio-1
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+*.code-workspace
+.idea/
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.swp

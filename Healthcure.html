@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthCure Case Study — Shivam Singh</title>
+  <meta name="description" content="HealthCure — a full hospital management desktop app built in Java with Swing and SQL by Shivam Singh."/>
+  <meta property="og:title"       content="HealthCure Case Study — Shivam Singh"/>
+  <meta property="og:description" content="Hospital management system built with Java, Swing, SQL and JDBC."/>
+  <meta property="og:type"        content="article"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23FFB800'/><text x='16' y='22' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%2306060c'>SS</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── Case Study Shared Styles ── */
+    .cs-wrap { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    .cs-back {
+      position: fixed; top: 5rem; left: 2rem;
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--ff-mon); font-size: .65rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--ash); z-index: 100;
+      transition: color .3s;
+    }
+    .cs-back:hover { color: var(--gold); }
+    .cs-back:hover svg { transform: translateX(-3px); }
+    .cs-back svg { transition: transform .3s; }
+
+    /* Hero */
+    .cs-hero {
+      min-height: 60vh;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 0 4rem;
+      border-bottom: 1px solid var(--rim);
+      position: relative;
+    }
+    /* Subtle medical cross watermark */
+    .cs-hero::before {
+      content: '+';
+      position: absolute;
+      right: -2rem; top: 6rem;
+      font-family: var(--ff-ser);
+      font-size: 18rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.02);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cs-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--ff-mon); font-size: .62rem;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: #4f9eff;
+      background: rgba(79,158,255,.08);
+      border: 1px solid rgba(79,158,255,.2);
+      padding: .3rem .9rem; border-radius: 100px;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+    .cs-hero-title {
+      font-family: var(--ff-ser);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -.03em;
+      margin-bottom: 1.5rem;
+    }
+    .cs-hero-title em { font-style: italic; color: #4f9eff; }
+    .cs-hero-sub {
+      font-size: 1.05rem; color: var(--ash);
+      line-height: 1.8; max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+    .cs-meta { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .cs-meta-item { display: flex; flex-direction: column; gap: .25rem; }
+    .cs-meta-label { font-family: var(--ff-mon); font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
+    .cs-meta-val { font-family: var(--ff-san); font-size: .9rem; font-weight: 600; color: var(--snow); }
+
+    /* Sections */
+    .cs-section { padding: 4rem 0; border-bottom: 1px solid var(--rim); }
+    .cs-section:last-child { border-bottom: none; }
+    .cs-section-label {
+      font-family: var(--ff-mon); font-size: .62rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: #4f9eff; margin-bottom: .75rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .cs-section-label::before { content: ''; display: inline-block; width: 1rem; height: 1px; background: #4f9eff; }
+    .cs-h2 {
+      font-family: var(--ff-ser);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600; letter-spacing: -.02em;
+      color: var(--snow); margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+    .cs-h2 em { font-style: italic; color: #4f9eff; }
+    .cs-p { font-size: .95rem; color: var(--ash); line-height: 1.9; margin-bottom: 1.2rem; }
+    .cs-p strong { color: var(--snow); }
+
+    /* Split cards */
+    .cs-split { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+    @media(max-width: 640px) { .cs-split { grid-template-columns: 1fr; } }
+    .cs-split-card { background: var(--card); border: 1px solid var(--rim); border-radius: 16px; padding: 1.5rem; }
+    .cs-split-card h4 { font-family: var(--ff-mon); font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ash); margin-bottom: .85rem; }
+    .cs-split-card ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .cs-split-card ul li { font-size: .88rem; color: var(--ash); line-height: 1.5; display: flex; gap: .6rem; align-items: flex-start; }
+    .cs-split-card ul li::before { content: '→'; color: #4f9eff; flex-shrink: 0; font-size: .8rem; margin-top: .1rem; }
+
+    /* Tech stack pills */
+    .cs-stack { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
+    .cs-stack span {
+      font-family: var(--ff-mon); font-size: .68rem;
+      padding: .35rem 1rem; border-radius: 100px;
+      background: rgba(79,158,255,.06);
+      border: 1px solid rgba(79,158,255,.2);
+      color: #4f9eff;
+    }
+
+    /* Modules grid */
+    .cs-modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+    @media(max-width: 640px) { .cs-modules { grid-template-columns: 1fr 1fr; } }
+    .cs-module {
+      background: var(--card); border: 1px solid var(--rim);
+      border-radius: 12px; padding: 1.25rem;
+      transition: border-color .3s, transform .3s;
+    }
+    .cs-module:hover { border-color: rgba(79,158,255,.3); transform: translateY(-3px); }
+    .cs-module-icon { font-size: 1.75rem; margin-bottom: .6rem; }
+    .cs-module-title { font-family: var(--ff-san); font-size: .88rem; font-weight: 700; color: var(--snow); margin-bottom: .3rem; }
+    .cs-module-sub { font-family: var(--ff-mon); font-size: .62rem; color: var(--ash); }
+
+    /* DB schema visual */
+    .cs-schema {
+      background: var(--card); border: 1px solid var(--rim);
+      border-radius: 16px; padding: 2rem; margin: 2rem 0;
+      font-family: var(--ff-mon);
+    }
+    .cs-schema-title { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ash); margin-bottom: 1.25rem; }
+    .cs-tables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    @media(max-width: 640px) { .cs-tables { grid-template-columns: 1fr; } }
+    .cs-table { border: 1px solid var(--rim); border-radius: 10px; overflow: hidden; }
+    .cs-table-head {
+      padding: .5rem .85rem;
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .08em;
+      background: rgba(79,158,255,.1);
+      color: #4f9eff;
+      border-bottom: 1px solid var(--rim);
+    }
+    .cs-table-row {
+      padding: .35rem .85rem;
+      font-size: .65rem; color: var(--ash);
+      border-bottom: 1px solid rgba(255,255,255,.03);
+      display: flex; gap: .5rem; align-items: center;
+    }
+    .cs-table-row:last-child { border-bottom: none; }
+    .cs-table-pk { color: var(--gold); font-size: .58rem; }
+    .cs-table-fk { color: #4f9eff; font-size: .58rem; }
+
+    /* Learnings */
+    .cs-learnings { display: flex; flex-direction: column; gap: .85rem; margin: 1.5rem 0; }
+    .cs-learning { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: var(--card); border: 1px solid var(--rim); border-radius: 12px; }
+    .cs-learning-num { font-family: var(--ff-ser); font-size: 1.4rem; font-weight: 700; color: #4f9eff; opacity: .5; flex-shrink: 0; line-height: 1; margin-top: .1rem; }
+    .cs-learning-text { font-size: .88rem; color: var(--ash); line-height: 1.65; }
+    .cs-learning-text strong { color: var(--snow); }
+
+    /* Buttons */
+    .cs-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .cs-btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .85rem 2rem; border-radius: 100px;
+      background: #4f9eff; color: #06060c;
+      font-family: var(--ff-san); font-size: .8rem;
+      font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      transition: all .3s var(--spring);
+    }
+    .cs-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(79,158,255,.4); }
+    .cs-btn-secondary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .85rem 2rem; border-radius: 100px;
+      border: 1px solid var(--rim-h); color: var(--snow);
+      font-family: var(--ff-san); font-size: .8rem;
+      font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      transition: all .3s var(--spring);
+    }
+    .cs-btn-secondary:hover { border-color: #4f9eff; color: #4f9eff; transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+  <div class="page-transition" id="page-transition"></div>
+
+  <!-- ░ CURSOR -->
+  <div id="c-dot"></div>
+  <div id="c-ring"></div>
+  <div id="c-trail"></div>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="6" fill="rgba(255,184,0,0.12)" stroke="rgba(255,184,0,0.3)" stroke-width="1"/>
+        <text x="14" y="19" text-anchor="middle" fill="#FFB800" font-size="11" font-family="JetBrains Mono" font-weight="500">SS</text>
+      </svg>
+    </a>
+    <div class="nav-center">
+      <a href="index.html#work"    class="nl">Work</a>
+      <a href="index.html#about"   class="nl">About</a>
+      <a href="index.html#contact" class="nl">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <a href="public/Shivam_Singh_Resume.pdf" download class="nav-resume">
+        <span>Resume</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="cs-wrap">
+
+      <a href="index.html#work" class="cs-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to Work
+      </a>
+
+      <!-- ── HERO ── -->
+      <div class="cs-hero">
+        <div class="cs-tag">🏥 Desktop Application · Completed</div>
+        <h1 class="cs-hero-title">Health<em>Cure</em></h1>
+        <p class="cs-hero-sub">A comprehensive hospital management system — handling patient records, doctor schedules, appointment booking, and billing from a single Java desktop application backed by a real-time SQL database.</p>
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-val">Solo Developer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Timeline</span>
+            <span class="cs-meta-val">2023</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Status</span>
+            <span class="cs-meta-val" style="color:#4ade80">✓ Completed</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Type</span>
+            <span class="cs-meta-val">Academic Project</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Reading Time</span>
+            <span class="cs-meta-val">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:.3rem;vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span id="read-time-val">4 min read</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PROBLEM ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">01 · Problem</div>
+        <h2 class="cs-h2">Why <em>HealthCure</em>?</h2>
+        <p class="cs-p">Small clinics and academic hospital labs often rely on paper records or scattered spreadsheets to manage patients, appointments, and doctors. This creates errors, data loss, and wasted time. HealthCure was built to replace that chaos with a single, reliable desktop system.</p>
+        <div class="cs-split">
+          <div class="cs-split-card">
+            <h4>Pain Points Solved</h4>
+            <ul>
+              <li>Paper records get lost — patient history needs to be digital and searchable</li>
+              <li>Appointment scheduling done manually — double bookings happen frequently</li>
+              <li>No visibility into doctor availability across departments</li>
+              <li>Billing handled in separate spreadsheets — error-prone and slow</li>
+            </ul>
+          </div>
+          <div class="cs-split-card">
+            <h4>Target Users</h4>
+            <ul>
+              <li>Small clinic administrators managing daily operations</li>
+              <li>Receptionists booking and tracking appointments</li>
+              <li>Doctors needing quick access to patient history</li>
+              <li>Academic labs simulating hospital management workflows</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FEATURES ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">02 · What It Does</div>
+        <h2 class="cs-h2">Core <em>Modules</em></h2>
+        <p class="cs-p">HealthCure is built around 6 core modules, each handling a distinct part of hospital operations. Every module shares the same SQL database, so data flows seamlessly — booking an appointment automatically updates the doctor's schedule and the patient's record.</p>
+        <div class="cs-modules">
+          <div class="cs-module">
+            <div class="cs-module-icon">👤</div>
+            <div class="cs-module-title">Patient Management</div>
+            <div class="cs-module-sub">Register, search, update patient profiles and full medical history</div>
+          </div>
+          <div class="cs-module">
+            <div class="cs-module-icon">🩺</div>
+            <div class="cs-module-title">Doctor Directory</div>
+            <div class="cs-module-sub">Manage doctors by department, specialization and availability</div>
+          </div>
+          <div class="cs-module">
+            <div class="cs-module-icon">📅</div>
+            <div class="cs-module-title">Appointments</div>
+            <div class="cs-module-sub">Book, reschedule and cancel with conflict detection</div>
+          </div>
+          <div class="cs-module">
+            <div class="cs-module-icon">🏥</div>
+            <div class="cs-module-title">Ward / Bed</div>
+            <div class="cs-module-sub">Track ward occupancy and bed assignments in real time</div>
+          </div>
+          <div class="cs-module">
+            <div class="cs-module-icon">💊</div>
+            <div class="cs-module-title">Prescriptions</div>
+            <div class="cs-module-sub">Log medications prescribed per visit, linked to patient records</div>
+          </div>
+          <div class="cs-module">
+            <div class="cs-module-icon">🧾</div>
+            <div class="cs-module-title">Billing</div>
+            <div class="cs-module-sub">Auto-generate bills from appointments and treatments</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DATABASE ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">03 · Database Design</div>
+        <h2 class="cs-h2">Schema &amp; <em>Architecture</em></h2>
+        <p class="cs-p">The database was designed around normalized relational tables with foreign key constraints enforcing referential integrity. JDBC handles all communication between the Java frontend and MySQL — every CRUD operation runs through parameterized prepared statements to prevent SQL injection.</p>
+        <div class="cs-schema">
+          <div class="cs-schema-title">Core Tables</div>
+          <div class="cs-tables">
+            <div class="cs-table">
+              <div class="cs-table-head">PATIENTS</div>
+              <div class="cs-table-row"><span class="cs-table-pk">PK</span> patient_id</div>
+              <div class="cs-table-row">full_name</div>
+              <div class="cs-table-row">dob · gender</div>
+              <div class="cs-table-row">contact · address</div>
+              <div class="cs-table-row">blood_group</div>
+              <div class="cs-table-row">created_at</div>
+            </div>
+            <div class="cs-table">
+              <div class="cs-table-head">DOCTORS</div>
+              <div class="cs-table-row"><span class="cs-table-pk">PK</span> doctor_id</div>
+              <div class="cs-table-row">full_name</div>
+              <div class="cs-table-row">specialization</div>
+              <div class="cs-table-row">department</div>
+              <div class="cs-table-row">contact</div>
+              <div class="cs-table-row">available_days</div>
+            </div>
+            <div class="cs-table">
+              <div class="cs-table-head">APPOINTMENTS</div>
+              <div class="cs-table-row"><span class="cs-table-pk">PK</span> appt_id</div>
+              <div class="cs-table-row"><span class="cs-table-fk">FK</span> patient_id</div>
+              <div class="cs-table-row"><span class="cs-table-fk">FK</span> doctor_id</div>
+              <div class="cs-table-row">date · time</div>
+              <div class="cs-table-row">status</div>
+              <div class="cs-table-row">notes</div>
+            </div>
+          </div>
+        </div>
+        <div class="cs-stack">
+          <span>Java SE</span><span>Swing</span><span>MySQL</span>
+          <span>JDBC</span><span>PreparedStatement</span><span>MVC Pattern</span>
+        </div>
+      </div>
+
+      <!-- ── LEARNINGS ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">04 · Challenges &amp; Learnings</div>
+        <h2 class="cs-h2">What I <em>learned</em></h2>
+        <div class="cs-learnings">
+          <div class="cs-learning">
+            <div class="cs-learning-num">01</div>
+            <div class="cs-learning-text"><strong>Database schema design from scratch</strong> — Designing normalized tables with proper foreign keys and avoiding redundancy was my first real exposure to relational database architecture. I learned how normalization reduces anomalies and improves query performance.</div>
+          </div>
+          <div class="cs-learning">
+            <div class="cs-learning-num">02</div>
+            <div class="cs-learning-text"><strong>JDBC connection management</strong> — Managing database connections efficiently — opening, reusing, and closing them properly — taught me about connection pooling concepts and why unclosed connections cause memory leaks in long-running applications.</div>
+          </div>
+          <div class="cs-learning">
+            <div class="cs-learning-num">03</div>
+            <div class="cs-learning-text"><strong>Building complex Swing UIs</strong> — Java Swing requires manual layout management. Building forms with validation, dynamic tables that update from database queries, and modal dialogs taught me how UI frameworks work at a low level before I learned React.</div>
+          </div>
+          <div class="cs-learning">
+            <div class="cs-learning-num">04</div>
+            <div class="cs-learning-text"><strong>Applying MVC architecture</strong> — Separating the data layer (SQL queries via JDBC), business logic (Java classes), and presentation (Swing panels) into distinct layers made the codebase maintainable and taught me why clean architecture matters even in small projects.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CTA ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">05 · Links</div>
+        <h2 class="cs-h2">See the <em>work</em></h2>
+        <p class="cs-p">HealthCure is a completed academic project showcasing full-stack Java desktop development with a real MySQL database. The source code is available on GitHub.</p>
+        <div class="cs-cta-row">
+          <a href="https://github.com/Shivam-Singh-Hash" target="_blank" class="cs-btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            View on GitHub
+          </a>
+          <a href="index.html#work" class="cs-btn-secondary">← Back to Portfolio</a>
+          <a href="skillbridge.html" class="cs-btn-secondary">Next Project →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ░ FLOATING BUTTONS -->
+  <div class="floating-btns">
+    <a href="https://wa.me/919451318146?text=Hi%20Shivam%2C%20I%20saw%20your%20portfolio!" target="_blank" rel="noreferrer" class="fab fab--wa" aria-label="WhatsApp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.847L.057 23.428a.5.5 0 0 0 .623.603l5.699-1.495A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.205-1.437l-.371-.22-3.862 1.013 1.03-3.727-.242-.386A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    </a>
+    <button class="fab fab--top" id="back-to-top" aria-label="Back to top">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+  </div>
+  <div class="copy-toast" id="copy-toast">✓ Email copied!</div>
+
+  <script>
+    (function() {
+      const content = document.querySelector('main');
+      if(!content) return;
+      const words = (content.innerText || content.textContent || '').trim().split(/\s+/).length;
+      const el = document.getElementById('read-time-val');
+      if(el) el.textContent = Math.max(1, Math.round(words / 200)) + ' min read';
+    })();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

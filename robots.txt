@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shivam-singh-hash.github.io/portfolio/sitemap.xml

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillBridge — Case Study · Shivam Singh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── Case Study Page Styles ── */
+    .cs-wrap { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    /* Hero */
+    .cs-hero {
+      min-height: 60vh;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 0 4rem;
+      position: relative;
+      border-bottom: 1px solid var(--rim);
+    }
+    .cs-back {
+      position: fixed; top: 5rem; left: 2rem;
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--ff-mon); font-size: .65rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--ash); z-index: 100;
+      transition: color .3s;
+    }
+    .cs-back:hover { color: var(--gold); }
+    .cs-back svg { transition: transform .3s; }
+    .cs-back:hover svg { transform: translateX(-3px); }
+
+    .cs-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--ff-mon); font-size: .62rem;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(255,184,0,.08);
+      border: 1px solid rgba(255,184,0,.2);
+      padding: .3rem .9rem; border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .cs-hero-title {
+      font-family: var(--ff-ser);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -.03em;
+      margin-bottom: 1.5rem;
+    }
+    .cs-hero-title em { font-style: italic; color: var(--gold); }
+    .cs-hero-sub {
+      font-size: 1.05rem;
+      color: var(--ash);
+      line-height: 1.8;
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+    .cs-meta {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+    }
+    .cs-meta-item { display: flex; flex-direction: column; gap: .25rem; }
+    .cs-meta-label { font-family: var(--ff-mon); font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
+    .cs-meta-val { font-family: var(--ff-san); font-size: .9rem; font-weight: 600; color: var(--snow); }
+
+    /* Section */
+    .cs-section { padding: 4rem 0; border-bottom: 1px solid var(--rim); }
+    .cs-section:last-child { border-bottom: none; }
+    .cs-section-label {
+      font-family: var(--ff-mon); font-size: .62rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .75rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .cs-section-label::before { content: ''; display: inline-block; width: 1rem; height: 1px; background: var(--gold); }
+    .cs-h2 {
+      font-family: var(--ff-ser);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600; letter-spacing: -.02em;
+      color: var(--snow); margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+    .cs-h2 em { font-style: italic; color: var(--gold); }
+    .cs-p {
+      font-size: .95rem; color: var(--ash);
+      line-height: 1.9; margin-bottom: 1.2rem;
+    }
+    .cs-p strong { color: var(--snow); }
+
+    /* Problem / Solution split */
+    .cs-split { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+    @media(max-width: 640px) { .cs-split { grid-template-columns: 1fr; } }
+    .cs-split-card {
+      background: var(--card); border: 1px solid var(--rim);
+      border-radius: 16px; padding: 1.5rem;
+    }
+    .cs-split-card h4 {
+      font-family: var(--ff-mon); font-size: .65rem;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--ash); margin-bottom: .85rem;
+    }
+    .cs-split-card ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .cs-split-card ul li {
+      font-size: .88rem; color: var(--ash); line-height: 1.5;
+      display: flex; gap: .6rem; align-items: flex-start;
+    }
+    .cs-split-card ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; font-size: .8rem; margin-top: .1rem; }
+
+    /* Tech stack */
+    .cs-stack { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
+    .cs-stack span {
+      font-family: var(--ff-mon); font-size: .68rem;
+      padding: .35rem 1rem; border-radius: 100px;
+      background: rgba(255,184,0,.06);
+      border: 1px solid rgba(255,184,0,.2);
+      color: var(--gold);
+    }
+
+    /* Architecture diagram boxes */
+    .cs-arch {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin: 2rem 0;
+    }
+    @media(max-width: 640px) { .cs-arch { grid-template-columns: 1fr; } }
+    .cs-arch-box {
+      background: var(--card); border: 1px solid var(--rim);
+      border-radius: 12px; padding: 1.25rem;
+      text-align: center;
+      transition: border-color .3s, transform .3s;
+    }
+    .cs-arch-box:hover { border-color: var(--rim-h); transform: translateY(-3px); }
+    .cs-arch-icon { font-size: 1.75rem; margin-bottom: .5rem; }
+    .cs-arch-title { font-family: var(--ff-san); font-size: .88rem; font-weight: 700; color: var(--snow); margin-bottom: .3rem; }
+    .cs-arch-sub { font-family: var(--ff-mon); font-size: .62rem; color: var(--ash); }
+
+    /* Feature list */
+    .cs-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    @media(max-width: 640px) { .cs-features { grid-template-columns: 1fr; } }
+    .cs-feature {
+      display: flex; gap: .85rem; align-items: flex-start;
+      padding: 1rem 1.1rem;
+      background: var(--card); border: 1px solid var(--rim);
+      border-radius: 12px;
+    }
+    .cs-feature-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .cs-feature-title { font-family: var(--ff-san); font-size: .88rem; font-weight: 700; color: var(--snow); margin-bottom: .2rem; }
+    .cs-feature-body { font-size: .8rem; color: var(--ash); line-height: 1.5; }
+
+    /* Learnings */
+    .cs-learnings { display: flex; flex-direction: column; gap: .85rem; margin: 1.5rem 0; }
+    .cs-learning {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1rem 1.25rem;
+      background: var(--card); border: 1px solid var(--rim);
+      border-radius: 12px;
+    }
+    .cs-learning-num {
+      font-family: var(--ff-ser); font-size: 1.4rem;
+      font-weight: 700; color: var(--gold); opacity: .5;
+      flex-shrink: 0; line-height: 1; margin-top: .1rem;
+    }
+    .cs-learning-text { font-size: .88rem; color: var(--ash); line-height: 1.65; }
+    .cs-learning-text strong { color: var(--snow); }
+
+    /* CTA */
+    .cs-cta-row {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .cs-btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .85rem 2rem; border-radius: 100px;
+      background: var(--gold); color: var(--black);
+      font-family: var(--ff-san); font-size: .8rem;
+      font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      transition: all .3s var(--spring);
+    }
+    .cs-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px var(--gold-g); }
+    .cs-btn-secondary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .85rem 2rem; border-radius: 100px;
+      border: 1px solid var(--rim-h); color: var(--snow);
+      font-family: var(--ff-san); font-size: .8rem;
+      font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      transition: all .3s var(--spring);
+    }
+    .cs-btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+  <!-- ░ SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
+
+  <div class="page-transition" id="page-transition"></div>
+  <div id="c-dot"></div>
+  <div id="c-ring"></div>
+  <div id="c-trail"></div>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="6" fill="rgba(255,184,0,0.12)" stroke="rgba(255,184,0,0.3)" stroke-width="1"/>
+        <text x="14" y="19" text-anchor="middle" fill="#FFB800" font-size="11" font-family="JetBrains Mono" font-weight="500">SS</text>
+      </svg>
+    </a>
+    <div class="nav-center">
+      <a href="index.html#work"    class="nl">Work</a>
+      <a href="index.html#about"   class="nl">About</a>
+      <a href="index.html#contact" class="nl">Contact</a>
+    </div>
+    <a href="public/Shivam_Singh_Resume.pdf" download class="nav-resume">
+      <span>Resume</span>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+    </a>
+  </nav>
+
+  <main>
+    <div class="cs-wrap">
+
+      <a href="index.html#work" class="cs-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to Work
+      </a>
+
+      <!-- ── HERO ── -->
+      <div class="cs-hero">
+        <div class="cs-tag">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:gold-pulse 2s ease infinite"></span>
+          AI-Powered Platform · In Development
+        </div>
+        <h1 class="cs-hero-title">Skill<em>Bridge</em></h1>
+        <p class="cs-hero-sub">An intelligent career & skill-exchange ecosystem — where users barter skills 1-on-1, get AI-driven career roadmaps, schedule peer sessions, and build a reputation. Think LinkedIn + Duolingo + Barter + AI Mentor.</p>
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-val">Full-Stack Developer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Timeline</span>
+            <span class="cs-meta-val">2024 → Present</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Status</span>
+            <span class="cs-meta-val" style="color:var(--gold)">● In Development</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Type</span>
+            <span class="cs-meta-val">Personal Project</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Reading Time</span>
+            <span class="cs-meta-val">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:.3rem;vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span id="read-time-val">5 min read</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── THE PROBLEM ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">01 · Problem</div>
+        <h2 class="cs-h2">Why does <em>SkillBridge</em> exist?</h2>
+        <p class="cs-p">Students and early-career developers have skills others need — but no structured way to trade them. A React developer can't afford a Java tutor. A backend engineer struggles with UI. Meanwhile both have exactly what the other needs. The existing platforms either charge money or don't facilitate structured peer learning.</p>
+        <div class="cs-split">
+          <div class="cs-split-card">
+            <h4>Pain Points</h4>
+            <ul>
+              <li>No platform for skill bartering — you pay or you don't learn</li>
+              <li>Generic job boards don't help students grow specific skills</li>
+              <li>No AI guidance on what to learn next based on your profile</li>
+              <li>Scheduling peer sessions is fragmented across WhatsApp, Calendly, etc.</li>
+            </ul>
+          </div>
+          <div class="cs-split-card">
+            <h4>Target Users</h4>
+            <ul>
+              <li>CS students who want to learn without paying for courses</li>
+              <li>Early-career developers filling skill gaps fast</li>
+              <li>Bootcamp graduates with uneven skill sets</li>
+              <li>People who learn better through teaching others</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── THE SOLUTION ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">02 · Solution</div>
+        <h2 class="cs-h2">How <em>SkillBridge</em> solves it</h2>
+        <p class="cs-p">SkillBridge creates a structured marketplace where skills are the currency. You list what you can teach and what you want to learn — the AI matches you with compatible partners, suggests a learning roadmap, and facilitates the entire exchange.</p>
+
+        <div class="cs-features">
+          <div class="cs-feature">
+            <div class="cs-feature-icon">🤖</div>
+            <div>
+              <div class="cs-feature-title">AI Career Guide</div>
+              <div class="cs-feature-body">Analyzes your profile and suggests the exact skills that will close your biggest career gaps, with matched learning partners.</div>
+            </div>
+          </div>
+          <div class="cs-feature">
+            <div class="cs-feature-icon">🔄</div>
+            <div>
+              <div class="cs-feature-title">Skill Barter System</div>
+              <div class="cs-feature-body">Structured 1-on-1 skill exchange — you teach what you know, learn what you need. No money changes hands.</div>
+            </div>
+          </div>
+          <div class="cs-feature">
+            <div class="cs-feature-icon">💬</div>
+            <div>
+              <div class="cs-feature-title">Live Chat & Sessions</div>
+              <div class="cs-feature-body">Real-time messaging via WebSocket and integrated session scheduling so learning happens consistently.</div>
+            </div>
+          </div>
+          <div class="cs-feature">
+            <div class="cs-feature-icon">⭐</div>
+            <div>
+              <div class="cs-feature-title">Reputation System</div>
+              <div class="cs-feature-body">Users earn reputation points for quality teaching — creating accountability and a meritocratic skill economy.</div>
+            </div>
+          </div>
+          <div class="cs-feature">
+            <div class="cs-feature-icon">📊</div>
+            <div>
+              <div class="cs-feature-title">Progress Tracking</div>
+              <div class="cs-feature-body">Track your learning journey — milestones, session history, skill badges earned, and roadmap completion.</div>
+            </div>
+          </div>
+          <div class="cs-feature">
+            <div class="cs-feature-icon">🔐</div>
+            <div>
+              <div class="cs-feature-title">Secure Auth (JWT)</div>
+              <div class="cs-feature-body">Spring Security with JWT tokens for stateless, secure authentication across the full platform.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ARCHITECTURE ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">03 · Architecture</div>
+        <h2 class="cs-h2">How it's <em>built</em></h2>
+        <p class="cs-p">A clean separation of concerns — React frontend communicates with a Spring Boot REST API, while WebSocket handles real-time messaging. MySQL stores relational data with optimized queries for the matching algorithm.</p>
+
+        <div class="cs-arch">
+          <div class="cs-arch-box">
+            <div class="cs-arch-icon">⚛️</div>
+            <div class="cs-arch-title">Frontend</div>
+            <div class="cs-arch-sub">React · Axios · WebSocket Client</div>
+          </div>
+          <div class="cs-arch-box">
+            <div class="cs-arch-icon">☕</div>
+            <div class="cs-arch-title">Backend</div>
+            <div class="cs-arch-sub">Spring Boot · Spring Security · JWT</div>
+          </div>
+          <div class="cs-arch-box">
+            <div class="cs-arch-icon">🗄️</div>
+            <div class="cs-arch-title">Database</div>
+            <div class="cs-arch-sub">MySQL · JPA / Hibernate</div>
+          </div>
+          <div class="cs-arch-box">
+            <div class="cs-arch-icon">🔌</div>
+            <div class="cs-arch-title">Real-time</div>
+            <div class="cs-arch-sub">WebSocket · STOMP Protocol</div>
+          </div>
+          <div class="cs-arch-box">
+            <div class="cs-arch-icon">🤖</div>
+            <div class="cs-arch-title">AI Layer</div>
+            <div class="cs-arch-sub">Python · ML Matching Algorithm</div>
+          </div>
+          <div class="cs-arch-box">
+            <div class="cs-arch-icon">🔄</div>
+            <div class="cs-arch-title">API Design</div>
+            <div class="cs-arch-sub">RESTful · JSON · Stateless</div>
+          </div>
+        </div>
+
+        <div class="cs-stack">
+          <span>React.js</span><span>Spring Boot</span><span>MySQL</span>
+          <span>WebSocket</span><span>JWT</span><span>Python</span>
+          <span>Machine Learning</span><span>REST API</span><span>JPA</span>
+        </div>
+      </div>
+
+      <!-- ── CHALLENGES ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">04 · Challenges & Learnings</div>
+        <h2 class="cs-h2">What I <em>learned</em></h2>
+        <div class="cs-learnings">
+          <div class="cs-learning">
+            <div class="cs-learning-num">01</div>
+            <div class="cs-learning-text"><strong>Designing the matching algorithm</strong> — Building a skill compatibility score that weighs teaching strength, learning goals, and availability required careful normalization of heterogeneous user data. I learned how to preprocess and vectorize profile data using Python before feeding it to the scoring model.</div>
+          </div>
+          <div class="cs-learning">
+            <div class="cs-learning-num">02</div>
+            <div class="cs-learning-text"><strong>WebSocket at scale</strong> — Implementing real-time chat with STOMP over WebSocket in Spring Boot required understanding connection lifecycle, heartbeat management, and graceful disconnection handling. Stateless JWT authentication with WebSocket was a particularly interesting challenge.</div>
+          </div>
+          <div class="cs-learning">
+            <div class="cs-learning-num">03</div>
+            <div class="cs-learning-text"><strong>Database schema design</strong> — Modeling the many-to-many barter relationship between users, with sessions, reputation, and skill listings all interconnected, taught me to think deeply about normalization vs. query performance tradeoffs in MySQL.</div>
+          </div>
+          <div class="cs-learning">
+            <div class="cs-learning-num">04</div>
+            <div class="cs-learning-text"><strong>React state management</strong> — Managing complex async state across the matching dashboard, chat system, and session scheduler without Redux required creative use of Context API and custom hooks to avoid prop drilling and unnecessary re-renders.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CTA ── -->
+      <div class="cs-section">
+        <div class="cs-section-label">05 · Links</div>
+        <h2 class="cs-h2">See the <em>work</em></h2>
+        <p class="cs-p">SkillBridge is actively in development. The codebase and design mockups are available on GitHub. Feel free to reach out if you want to discuss the architecture or collaborate.</p>
+        <div class="cs-cta-row">
+          <a href="https://github.com/Shivam-Singh-Hash" target="_blank" class="cs-btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            View on GitHub
+          </a>
+          <a href="mailto:shivamsinghrathore70@gmail.com" class="cs-btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Get In Touch
+          </a>
+          <a href="index.html#work" class="cs-btn-secondary">
+            ← Back to Portfolio
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="copy-toast" id="copy-toast">✓ Email copied!</div>
+  <script>
+    (function() {
+      const content = document.querySelector('main');
+      if(!content) return;
+      const words = (content.innerText || content.textContent || '').trim().split(/\s+/).length;
+      const el = document.getElementById('read-time-val');
+      if(el) el.textContent = Math.max(1, Math.round(words / 200)) + ' min read';
+    })();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
