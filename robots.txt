@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shivam-singh-hash.github.io/portfolio/sitemap.xml
+Sitemap: https://shivam-singh-hash.github.io/Portfolio-1/sitemap.xml
